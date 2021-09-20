@@ -1,13 +1,14 @@
-var obj1 = { name: "Person 1", age:5 };
-var obj2 = { age:5, name: "Person 1" };
-if(Object.keys(obj1).length==Object.keys(obj2).length){
-    for(var key in obj1) {
-}
-    if(obj1[key] == obj2[key]) {
-        flag=true;
-    } else
-    {
-        flag=false;
+var req= new XMLHttpRequest();
+//STEP 2:OPEN A CONNECTION
+req.open('GET','https://restcountries.eu/rest/v2/all',true);
+//step3: initiate the connection.
+req.send();
+// step 4: once teh data loaded from the server successfully 
+req.onload=function(){
+    // here we are convrting
+    var result=JSON.parse(req.response);
+     console.log(result);
+   for (var i=0;i<result.length;i++){
+        console.log(result[i].countryflags);
     }
 }
-    console.log("is object equal"+flag);
